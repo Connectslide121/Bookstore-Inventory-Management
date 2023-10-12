@@ -139,6 +139,9 @@ namespace Bookstore_Inventory_Management
 
             }while(validQuantitySold == false);
 
+            newBook.Benefit = newBook.Price - newBook.Cost;
+            newBook.BenefitSold = newBook.Benefit - newBook.QuantitySold;
+
             inventory.Add(newBook);
 
             return inventory;
@@ -146,23 +149,18 @@ namespace Bookstore_Inventory_Management
 
         //******************************************************************************************************************************************************//
 
-        public static List<Book> DisplayInventory(List<Book> inventory)
+        public static void DisplayInventory(List<Book> inventory)
         {
-            string inventoryDisplay = "";
 
             foreach (Book item in inventory)
             {
-                inventoryDisplay += $"Quantity: {item.Quantity} \t ISBN: {item.Isbn} \t Title: {item.Title} \n";
+                Console.WriteLine($"Quantity: {item.Quantity} \t ISBN: {item.Isbn} \t Title: {item.Title} \t Authors: {string.Join(",", item.Authors)}");
             }
-
-            Console.WriteLine(inventoryDisplay);
-
-            return inventory;
         }
 
         //******************************************************************************************************************************************************//
 
-        public static List<Book> SearchForBooks(List<Book> searchInventory)
+        public static void SearchForBooks(List<Book> searchInventory)
         {
             Console.WriteLine("Enter search query (Title, ISBN, Author, Category or Description):");
             string searchInput = Console.ReadLine().ToLower();
@@ -177,7 +175,11 @@ namespace Bookstore_Inventory_Management
                     Book.LongDescription.ToLower().Contains(searchInput))
                 .ToList();
 
-            return searchResult;
+            foreach (Book item in searchResult)
+            {
+                Console.WriteLine($"Quantity: {item.Quantity} \t ISBN: {item.Isbn} \t Title: {item.Title} \t Categories: {string.Join(",", item.Categories)}");
+            }
+           
         }
 
         //******************************************************************************************************************************************************//

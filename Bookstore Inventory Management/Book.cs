@@ -22,6 +22,8 @@ namespace Bookstore_Inventory_Management
         public int QuantitySold { get; set; }
         public int Cost { get; set; }
         public int Price { get; set; }
+        public int Benefit { get; set; }
+        public int BenefitSold { get; set; }
 
 
         public int QuantityMethod()
@@ -37,12 +39,12 @@ namespace Bookstore_Inventory_Management
         public int CostMethod()
         {
             Random cost = new Random();
-            return cost.Next(1,10);
+            return cost.Next(10,90);
         }
         public int PriceMethod()
         {
             Random price = new Random();
-            return price.Next(11,50);
+            return price.Next(100,500);
         }
 
         public Book() //CONSTRUCTOR
@@ -51,6 +53,8 @@ namespace Bookstore_Inventory_Management
             QuantitySold = QuantitySoldMethod();
             Cost = CostMethod();
             Price = PriceMethod();
+            Benefit = Price - Cost;
+            BenefitSold = Benefit * QuantitySold;
         }
 
     }
