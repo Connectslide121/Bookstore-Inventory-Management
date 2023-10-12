@@ -8,16 +8,16 @@ namespace Bookstore_Inventory_Management
 {
     public class Book
     {
-        public string Title {  get; set; }
-        public string Isbn { get; set; }
-        public int PageCount { get; set; }
-        public PublishedDate PublishedDate { get; set; }
-        public string ThumbnailUrl { get; set; }
-        public string Status { get; set; }
-        public string[] Authors  { get; set;}
-        public string[] Categories { get; set;}
-        public string ShortDescription { get; set; }
-        public string LongDescription { get; set; }
+        public string Title { get; set; } = "null";
+        public string Isbn { get; set; } = "null";
+        public int PageCount { get; set; } = 0;
+        public PublishedDate PublishedDate { get; set; } = new PublishedDate();
+        public string ThumbnailUrl { get; set; } = "null";
+        public string Status { get; set; } = "null";
+        public string[] Authors  { get; set;} = new string[0];
+        public string[] Categories { get; set;} = new string[0];
+        public string ShortDescription { get; set; } = "null";
+        public string LongDescription { get; set; } = "null";
         public int Quantity { get; set; }
         public int QuantitySold { get; set; }
         public int Cost { get; set; }
@@ -27,12 +27,12 @@ namespace Bookstore_Inventory_Management
         public int QuantityMethod()
         {
             Random quantity = new Random();
-            return quantity.Next(1,11);
+            return quantity.Next(0,11);
         }
         public int QuantitySoldMethod()
         {
             Random quantitySold = new Random();
-            return quantitySold.Next(1,101);
+            return quantitySold.Next(0,101);
         }
         public int CostMethod()
         {
