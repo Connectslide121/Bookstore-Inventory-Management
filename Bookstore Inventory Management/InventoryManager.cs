@@ -9,12 +9,28 @@ namespace Bookstore_Inventory_Management
 {
     public class InventoryManager
     {
-        public static List<Book> CreateInventory(string filePath)
+        public static List<Book> CreateInventory()
         {
+            string filePath = "C:\\Users\\Jon\\Desktop\\Lexicon .NET\\Self study\\Bookstore Inventory Management\\Bookstore Inventory Management\\BookList.json";
+
             List<Book> inventory = JsonSerializer.Deserialize<List<Book>>(File.ReadAllText(filePath));
 
             return inventory;
         }
+
+        //******************************************************************************************************************************************************//
+
+        public static void SaveInventory(List<Book> inventory)
+        {
+            string filePath = "C:\\Users\\Jon\\Desktop\\Lexicon .NET\\Self study\\Bookstore Inventory Management\\Bookstore Inventory Management\\BookList.json";
+
+            string updatedInventory = JsonSerializer.Serialize(inventory);
+
+            File.WriteAllText(filePath, updatedInventory);
+
+            Console.WriteLine("Inventory saved.");
+        }
+
 
         //******************************************************************************************************************************************************//
 
